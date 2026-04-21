@@ -1,0 +1,33 @@
+<configuration>
+    <tradingBot>
+        <strategy>
+            <name>Digit Analysis OV3</name>
+            <description>Deriv trading bot configuration using digit analysis.
+            The bot uses OV3 to make trading decisions, stops trading upon encountering UN3, and resumes when OV3 is detected again.</description>
+        </strategy>
+        <conditions>
+            <condition>
+                <name>OV3 Trigger</name>
+                <description>The bot triggers a buy action when OV3 is detected.</description>
+                <action type="buy">
+                    <positions>over</positions>
+                    <stopLoss>un3</stopLoss>
+                </action>
+            </condition>
+            <condition>
+                <name>UN3 Stop Condition</name>
+                <description>The bot stops functioning when UN3 appears.</description>
+                <action type="stop">
+                    <message>Stopping trading as UN3 has appeared.</message>
+                </action>
+            </condition>
+            <condition>
+                <name>OV3 Restart Condition</name>
+                <description>The bot resumes trading when OV3 appears again after a stop.</description>
+                <action type="restart">
+                    <message>Restarting trading as OV3 has appeared again.</message>
+                </action>
+            </condition>
+        </conditions>
+    </tradingBot>
+</configuration>
